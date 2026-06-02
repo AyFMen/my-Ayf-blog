@@ -1,22 +1,33 @@
+{% load static %}
 <html>
     <head>
-        <title>Егорик</title>
+        <title>Егорка</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
+
     <body>
-        <div>
-            <h1><a href="/">Моя первая работа</a></h1>
+        <div class="page-header">
+            <h1><a href="/">Ехорка хрю хрю</a></h1>
         </div>
 
-        <div>
-            <p>published: 22.05.2026, 15:11</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Хакуна-Матата.</p>
-        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>Опубликовано: {{ post.published_date }}</p>
+                            </div>
 
-        <div>
-            <p>published: 22.05.2026, 15:11</p>
-            <h2><a href="">https://ss64.com/ps/</a></h2>
-            <p>Хакуна-Матата.</p>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </body>
 </html>
